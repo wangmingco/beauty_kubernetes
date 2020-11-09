@@ -1,5 +1,11 @@
 #/bin/bash
 
+function clone_repo() {
+	command -v git >/dev/null 2>&1 || { yum install git  }
+	
+	git clone git@github.com:wangmingco/beauty_kubernetes.git
+}
+
 function config_firewall() {
 	echo "1.----------------------开始设置防火墙-----------------------"
 	systemctl disable firewalld
@@ -71,11 +77,12 @@ function install_kubernetes() {
 	echo "6.----------------------开始安装kubernetes-----------------------"
 }
 
+clone_repo
+
 config_firewall
 config_swap
 config_yum_repo
 
-create_docker_daemon
 install_docker
 install_kubernetes
 
