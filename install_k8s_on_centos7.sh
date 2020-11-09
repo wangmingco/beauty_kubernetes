@@ -108,7 +108,6 @@ function call_all() {
 if [ $# > 0 ] 
 then
 	for arg in $*; do
-	    echo $arg
 	    `$arg`
 	done
 else
