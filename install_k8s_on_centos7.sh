@@ -49,7 +49,9 @@ function create_docker_daemon() {
 	echo "4.----------------------创建docker#daemon.json-----------------------"
 
 	mkdir -p /etc/docker
-
+	
+	cd $HOME/beauty_kubernetes
+	
 	cp ./daemon.json  /etc/docker/daemon.json
 	
 	ls -al -h /etc/docker/daemon.json
