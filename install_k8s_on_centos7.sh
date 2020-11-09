@@ -85,5 +85,3 @@ config_yum_repo
 
 install_docker
 install_kubernetes
-
-
