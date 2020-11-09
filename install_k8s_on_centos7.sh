@@ -87,6 +87,7 @@ function install_kubernetes() {
 	yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 	
 	kubeadm config print init-defaults > ./init.default.yaml
+	sed -i "s@imageRepository: k8s.gcr.io@imageRepository: registry.aliyuncs.com/google_containers@g" ./init.default.yaml
 	
 	kubeadm config images pull --config=init.default.yaml
 	
