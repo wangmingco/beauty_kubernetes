@@ -1,0 +1,41 @@
+{
+	"max-concurrent-downloads": 20,
+	"data-root": "/data/docker/data",
+	"exec-root": "/data/docker/root",
+	"registry-mirrors": [
+		"https://docker.mirrors.ustc.edu.cn"
+			  
+	],
+
+	"log-driver": "json-file",
+	"bridge": "docker0",
+	"oom-score-adjust": -1000,
+	"debug": false,
+	"log-opts": {
+		"max-size": "100M",
+		"max-file": "10"
+			  
+	},
+
+	"default-ulimits": {
+		"nofile": {
+			"Name": "nofile",
+			"Hard": 1024000,
+	  	   	"Soft": 1024000
+				    
+		},
+		"nproc": {
+		      	"Name": "nproc",
+	      		"Hard": 1024000,
+			"Soft": 1024000
+					    
+		},
+		"core": {
+		      "Name": "core",
+		      "Hard": -1,
+		      "Soft": -1					    
+		}
+
+			  
+	}
+}
