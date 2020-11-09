@@ -3,7 +3,7 @@
 function clone_repo() {
 	command -v git >/dev/null 2>&1 || { yum install -y git; }
 	
-	git clone git@github.com:wangmingco/beauty_kubernetes.git
+	git clone https://github.com/wangmingco/beauty_kubernetes.git
 }
 
 function config_firewall() {
