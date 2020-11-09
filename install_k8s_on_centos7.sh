@@ -85,17 +85,31 @@ function install_kubernetes() {
 	
 	yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 	
+	kubeadm config print init-default > ./init.default.yaml
+	
 	systemctl enable kubelet
 	systemctl start kubelet
 	
 	echo "6.----------------------开始安装kubernetes-----------------------"
 }
 
-clone_repo
+function call_all() {
+	clone_repo
 
-config_firewall
-config_swap
-config_yum_repo
+	config_firewall
+	config_swap
+	config_yum_repo
 
-install_docker
-install_kubernetes
+	install_docker
+	install_kubernetes
+}
+
+if [ $# > 0 ] 
+then
+	for arg in $*; do
+	    echo $arg
+	    ${$arg}
+	done
+else
+	call_all
+fi
