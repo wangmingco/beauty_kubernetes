@@ -73,7 +73,6 @@ function install_docker() {
 }
 
 function create_kubernetes_repo() {
-	mkdir /etc/yum.repos.d/
 	cp ./kubernetes.repo /etc/yum.repos.d/kubernetes.repo
 }
 
