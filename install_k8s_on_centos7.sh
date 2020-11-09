@@ -82,17 +82,25 @@ function install_kubernetes() {
 
 	echo "6.----------------------开始安装kubernetes-----------------------"
 	
+	echo "创建kubernetes.repo 文件"
 	create_kubernetes_repo
 	
+	echo "安装kubelet， kubeadm， kubectl"
 	yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 	
+	echo "修改init.default.yaml 文件"
 	kubeadm config print init-defaults > ./init.default.yaml
 	sed -i "s@imageRepository: k8s.gcr.io@imageRepository: registry.aliyuncs.com/google_containers@g" ./init.default.yaml
 	
+	echo "测试镜像拉取"
 	kubeadm config images pull --config=init.default.yaml
 	
+	echo "启动kubelet"
 	systemctl enable kubelet
 	systemctl start kubelet
+	
+	echo "安装kubernetes master"
+	kubeadm init --config=init.default.yaml
 	
 	echo "6.----------------------kubernetes安装完成-----------------------"
 }
