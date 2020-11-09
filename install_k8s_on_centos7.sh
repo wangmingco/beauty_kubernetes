@@ -86,7 +86,7 @@ function install_kubernetes() {
 	
 	yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 	
-	kubeadm config print init-default > ./init.default.yaml
+	kubeadm config print init-defaults > ./init.default.yaml
 	
 	systemctl enable kubelet
 	systemctl start kubelet
