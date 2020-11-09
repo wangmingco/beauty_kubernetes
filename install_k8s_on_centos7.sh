@@ -111,7 +111,7 @@ function call_all() {
 if [ $# > 0 ] 
 then
 	for arg in $*; do
-	    `$arg`
+	    $arg
 	done
 else
 	call_all
