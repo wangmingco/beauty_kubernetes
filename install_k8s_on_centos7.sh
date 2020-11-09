@@ -52,7 +52,7 @@ function create_docker_daemon() {
 	
 	cd $HOME/beauty_kubernetes
 	
-	cp ./daemon.json  /etc/docker/daemon.json
+	/bin/cp -rf ./daemon.json  /etc/docker/daemon.json
 	
 	ls -al -h /etc/docker/daemon.json
 
@@ -73,7 +73,7 @@ function install_docker() {
 }
 
 function create_kubernetes_repo() {
-	cp ./kubernetes.repo /etc/yum.repos.d/kubernetes.repo
+	/bin/cp -rf ./kubernetes.repo /etc/yum.repos.d/kubernetes.repo
 }
 
 function install_kubernetes() {
@@ -89,7 +89,7 @@ function install_kubernetes() {
 	systemctl enable kubelet
 	systemctl start kubelet
 	
-	echo "6.----------------------开始安装kubernetes-----------------------"
+	echo "6.----------------------kubernetes安装完成-----------------------"
 }
 
 function call_all() {
