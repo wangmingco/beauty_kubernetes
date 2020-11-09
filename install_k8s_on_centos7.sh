@@ -88,6 +88,8 @@ function install_kubernetes() {
 	
 	kubeadm config print init-defaults > ./init.default.yaml
 	
+	kubeadm config images pull --config=init.default.yaml
+	
 	systemctl enable kubelet
 	systemctl start kubelet
 	
