@@ -1,7 +1,7 @@
 #/bin/bash
 
 function clone_repo() {
-	command -v git >/dev/null 2>&1 || { yum install git  }
+	command -v git >/dev/null 2>&1 || { yum install -y git; }
 	
 	git clone git@github.com:wangmingco/beauty_kubernetes.git
 }
