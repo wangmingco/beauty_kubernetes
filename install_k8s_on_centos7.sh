@@ -66,16 +66,28 @@ function install_docker() {
 	yum install -y docker-ce
 	create_docker_daemon
 	systemctl daemon-reload
-	systemctl restart docker
 	systemctl enable docker
+	systemctl start docker
 	
 	echo "5.----------------------docker安装完成-----------------------"
+}
+
+function create_kubernetes_repo() {
+	mkdir /etc/yum.repos.d/
+	cp ./kubernetes.repo /etc/yum.repos.d/kubernetes.repo
 }
 
 function install_kubernetes() {
 
 	echo "6.----------------------开始安装kubernetes-----------------------"
-
+	
+	create_kubernetes_repo
+	
+	yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+	
+	systemctl enable kubelet
+	systemctl start kubelet
+	
 	echo "6.----------------------开始安装kubernetes-----------------------"
 }
 
