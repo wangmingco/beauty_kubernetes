@@ -74,6 +74,8 @@ function install_docker() {
 
 function create_kubernetes_repo() {
 	/bin/cp -rf ./kubernetes.repo /etc/yum.repos.d/kubernetes.repo
+	
+	ls -al -h /etc/yum.repos.d/kubernetes.repo
 }
 
 function install_kubernetes() {
