@@ -108,7 +108,7 @@ if [ $# > 0 ]
 then
 	for arg in $*; do
 	    echo $arg
-	    ${$arg}
+	    `$arg`
 	done
 else
 	call_all
